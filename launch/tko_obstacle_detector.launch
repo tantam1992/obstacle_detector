@@ -6,7 +6,7 @@
   <node name="nodelet_manager" pkg="nodelet" type="nodelet" args="manager" output="screen">
     <param name="num_worker_threads" value="20"/>
   </node>
-  
+
   <node name="scans_merger" pkg="nodelet" type="nodelet" args="load obstacle_detector/ScansMerger nodelet_manager">
     <param name="active"            value="true"/>
     <param name="publish_scan"      value="true"/>
@@ -39,7 +39,7 @@
 
     <param name="min_group_points"     value="5"/> <!-- default:5 -->
 
-    <param name="max_group_distance"   value="0.2"/> <!-- default:0.1 -->
+    <param name="max_group_distance"   value="0.15"/> <!-- default:0.1 -->
     <param name="distance_proportion"  value="0.00628"/>
     <param name="max_split_distance"   value="0.2"/>
     <param name="max_merge_separation" value="0.2"/>
