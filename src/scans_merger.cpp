@@ -96,7 +96,7 @@ bool ScansMerger::updateParams(std_srvs::Empty::Request &req, std_srvs::Empty::R
       // front_scan_sub_ = nh_.subscribe("front_scan", 10, &ScansMerger::frontScanCallback, this);
       // rear_scan_sub_ = nh_.subscribe("rear_scan", 10, &ScansMerger::rearScanCallback, this);
       front_scan_sub_ = nh_.subscribe("/lidarFront/scan_filtered", 10, &ScansMerger::frontScanCallback, this);
-      rear_scan_sub_ = nh_.subscribe("/lidarBack/scan_filtered", 10, &ScansMerger::rearScanCallback, this);
+      rear_scan_sub_ = nh_.subscribe("/livox_back/scan", 10, &ScansMerger::rearScanCallback, this);
       scan_pub_ = nh_.advertise<sensor_msgs::LaserScan>("scan_merged", 10);
       pcl_pub_ = nh_.advertise<sensor_msgs::PointCloud>("pcl", 10);
     }

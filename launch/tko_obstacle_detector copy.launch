@@ -3,34 +3,6 @@
 
   <!-- <param name="use_sim_time" value="true"/>   -->
 
-  <!-- run pointcloud_to_laserscan node -->
-  <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
-
-      <remap from="cloud_in" to="/livox_back/points"/>
-      <remap from="scan" to="/livox_back/scan"/>
-      <rosparam>
-          # target_frame: camera_link # Leave disabled to output scan in pointcloud frame
-          transform_tolerance: 0.01
-          min_height: -0.1
-          max_height: 0.0
-
-          angle_min: -1.5708 # -M_PI/2
-          angle_max: 1.5708 # M_PI/2
-          angle_increment: 0.0087 # M_PI/360.0
-          scan_time: 0.3333
-          range_min: 0.05
-          range_max: 2.0
-          use_inf: true
-          inf_epsilon: 1.0
-
-          # Concurrency level, affects number of pointclouds queued for processing and number of threads used            # 0 : Detect number of cores
-          # 1 : Single threaded
-          # 2->inf : Parallelism level
-          concurrency_level: 1
-      </rosparam>
-
-  </node>
-
   <node name="nodelet_manager" pkg="nodelet" type="nodelet" args="manager" output="screen">
     <param name="num_worker_threads" value="20"/>
   </node>
@@ -58,7 +30,7 @@
   <node name="obstacle_extractor" pkg="obstacle_detector" type="obstacle_extractor_node" >
     <param name="active"               value="true"/>
     <param name="use_scan"             value="true"/> <!-- default:false -->
-    <param name="use_pcl"              value="true"/> <!-- default:true -->
+    <param name="use_pcl"              value="false"/> <!-- default:true -->
 
     <param name="use_split_and_merge"    value="false"/> <!-- default:true -->
     <param name="circles_from_visibles"  value="true"/> <!-- default:false -->
